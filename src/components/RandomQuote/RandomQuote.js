@@ -1,4 +1,7 @@
 import React from 'react';
+import QuoteBox from '../QuoteBox/QuoteBox';
+import Button from '../Button/Button';
+import './RandomQuote.css';
 import axios from 'axios';
 import randomColor from "randomcolor";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -58,14 +61,18 @@ class RandomQuote extends React.Component{
       <>
       <div className="wrapper" >
         <h1 className="title">Random Quote Generator</h1>
-        <p>Quote: {quote}</p>
-        <p>Author: {author}</p>
-        <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' title="Post this quote on twitter!">
-          <span>
-          <FontAwesomeIcon icon={['fab','twitter']} />
-          </span>
-        </a>
-        <button onClick={this.getNewQuote}>Get new quote!</button>
+        <div id="quote-box">
+          <QuoteBox quote={quote} author={author} />
+
+              <div id="buttons">
+                <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${quote} ${author}`} target='_blank' title="Post this quote on twitter!">
+                <span>
+                  <FontAwesomeIcon icon={['fab','twitter']} />
+                </span>
+                </a>
+                <Button id='new-quote' title='New Quote' onClick={this.getNewQuote} />
+              </div>
+        </div>
       </div>
       </>
       )
